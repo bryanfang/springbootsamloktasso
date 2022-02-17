@@ -1,0 +1,19 @@
+# refer: https://github.com/code-tinkering/spring-security-saml2-service-provider-example/tree/main/src/main/resources
+spring:
+  security:
+    saml2:
+      relyingparty:
+        registration:
+          okta:
+            signing:
+              credentials: # need generate key pair and put them in credentials folder
+                - private-key-location: "classpath:credentials/private.key"
+                  certificate-location: "classpath:credentials/public.cer"
+            identityprovider:
+              singlesignon:
+                sign-request: false
+              entity-id: http://www.okta.com/exk3wda7mjZQOmU0b5d7
+              sso-url: https://dev-44452468.okta.com/app/dev-44452468_boottest_1/exk3wda7mjZQOmU0b5d7/sso/saml
+              metadata-uri: https://dev-44452468.okta.com/app/exk3wda7mjZQOmU0b5d7/sso/saml/metadata
+              verification.credentials:
+                - certificate-location: "classpath:credentials/okta.cert" # need download from okta
